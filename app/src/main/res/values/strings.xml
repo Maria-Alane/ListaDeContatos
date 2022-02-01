@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ListadeContatos</string>
+    <string name="imagem_do_contato">Imagem do Contato</string>
 </resources>
