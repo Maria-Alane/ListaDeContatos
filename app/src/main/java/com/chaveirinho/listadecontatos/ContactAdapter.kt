@@ -1,5 +1,6 @@
 package com.chaveirinho.listadecontatos
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,14 +13,16 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactAdapterViewHol
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return list.size
     }
 
     override fun onBindViewHolder(holder: ContactAdapterViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(list[position])
     }
 
-    class ContactAdapterViewHolder(itemView) : RecyclerView.ViewHolder(itemView) {
+    class ContactAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(contact: Contact) {
 
+        }
     }
 }
