@@ -1,5 +1,6 @@
 package com.chaveirinho.listadecontatos
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.widget.Toolbar;
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ClickItemContactListener {
     private val rvList: RecyclerView by lazy {
         findViewById(R.id.rv_list)
     }
 
-    private val adapter = ContactAdapter()
+    private val adapter = ContactAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun initDrawer() {
 
         val drawerLayout = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -58,12 +60,12 @@ class MainActivity : AppCompatActivity() {
                 ),
                 Contact(
                     "Eduardo",
-                    "(00) 0000-0000",
+                    "(11) 1111-1111",
                     "img.png"
                 ),
                 Contact(
                     "Nina Mudock",
-                    "(00) 0000-0000",
+                    "(22) 2222-2222",
                     "img.png"
                 )
             )
@@ -92,5 +94,11 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun clickItemContact(contact: Contact) {
+
+        val intent = Intent(this, ContactDetails::class.java)
+        startActivity(intent)
     }
 }
